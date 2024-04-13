@@ -8,6 +8,6 @@
   <value name="ExeName" type="string">Microsoft.VisualStudio.Code.ServiceHost</value>
   <value name="VSIs64BitProcess" type="string">True</value>
   <value name="PID" type="int">20759</value>
-  <value name="StillAlive" type="qword">133574967256107403</value>
+  <value name="StillAlive" type="qword">133574973256156306</value>
   <value name="CTime" type="qword">133574955222006532</value>
 </values>
