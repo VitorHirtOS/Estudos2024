@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class MenuBank {
 
     private boolean operacao = true;
+    private boolean excecao = false;
 
     public void Menu(){
         
@@ -20,34 +21,48 @@ public class MenuBank {
 
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Escolha uma operacao: ");
+            System.out.println("Escolha uma operacao: \n");
             int acaoDeOperacao = scanner.nextInt();
             
-            switch (acaoDeOperacao) {
+            switch (acaoDeOperacao){
                 case 1:
                     try{
-                        System.out.println("Operação escolhida Abrir conta\n");
 
-                        System.out.println("Qual o seu nome: \n");
-                        String nome = scanner.next();
-                        scanner.nextLine();
+                        while(!excecao){
+                            System.out.println("Operação escolhida Abrir conta\n");
+                        
+                            System.out.println("Qual o seu nome: \n");
+                            String nome = scanner.next();
+                            scanner.nextLine();
+    
+                            System.out.println("Qual o sua idade: \n");
+                            int idade;
 
-                        System.out.println("Qual o sua idade: \n");
-                        int idade = scanner.nextInt();
-                        scanner.nextLine();
+                            if(scanner.hasNextInt()){
+                                idade = scanner.nextInt();
+                            }else{
+                                throw new ExceptionAcaoMenu("Operação Inválida!!!");
+                            }
+                            scanner.nextLine();
 
-                        System.out.println("Qual o seu patrimonio: \n");
-                        int patrimonio = scanner.nextInt();
-                        scanner.nextLine();
+    
+                            System.out.println("Qual o seu patrimonio: \n");
+                            int patrimonio = scanner.nextInt();
 
-                        AbrirConta abrirConta = new AbrirConta(nome, idade, patrimonio);
-
-                        abrirConta.foiPossivelCriarAConta();
-                    }catch(){
-
+                            if(scanner.hasNextInt()){
+                                patrimonio = scanner.nextInt();
+                            }else{
+                                throw new ExceptionAcaoMenu("Operação Inválida!!!");  
+                            }
+    
+                            AbrirConta abrirConta = new AbrirConta(nome, idade, patrimonio);
+                            abrirConta.foiPossivelCriarAConta();
+                        
+                        }
+                       
+                    }catch(ExceptionAcaoMenu Ex){
+                        System.out.println("Erro de operação: " + Ex.getMessage());
                     }
-
-
                     break;
                 case 2:
                 case 3:

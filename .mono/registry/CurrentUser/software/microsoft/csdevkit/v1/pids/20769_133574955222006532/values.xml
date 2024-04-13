@@ -6,7 +6,7 @@
   <value name="extversion" type="string">1.4.29</value>
   <value name="extname" type="string">ms-dotnettools.csdevkit</value>
   <value name="VSInstanceId" type="string">0b4f6308-8a02-4fe5-bcd2-f9a2d8264ed51713021919209</value>
-  <value name="StillAlive" type="qword">133575066256794579</value>
+  <value name="StillAlive" type="qword">133575153257150839</value>
   <value name="PID" type="int">20769</value>
   <value name="VSIs64BitProcess" type="string">True</value>
   <value name="ShutdownReason" type="int">3</value>

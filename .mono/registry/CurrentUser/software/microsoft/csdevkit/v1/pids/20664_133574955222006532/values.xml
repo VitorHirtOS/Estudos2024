@@ -5,7 +5,7 @@
   <value name="VSIs64BitProcess" type="string">True</value>
   <value name="vscodeversion" type="string">1.88.1</value>
   <value name="extname" type="string">ms-dotnettools.csdevkit</value>
-  <value name="StillAlive" type="qword">133575066241631570</value>
+  <value name="StillAlive" type="qword">133575153242100474</value>
   <value name="ExeName" type="string">Microsoft.VisualStudio.Code.Server</value>
   <value name="VSExeVersion" type="string">0.2.183.64771</value>
   <value name="extversion" type="string">1.4.29</value>
