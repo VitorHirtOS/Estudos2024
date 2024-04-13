@@ -2,8 +2,8 @@ package ProjetoDeEstudos.ProjetoJavaBank;
 
 public interface logicaDoSistema {
     
-    public String validarIdade();
+    public int validarIdade();
 
-    public String valorPatrimonio();
-
+    public int valorPatrimonio();
+    
 }

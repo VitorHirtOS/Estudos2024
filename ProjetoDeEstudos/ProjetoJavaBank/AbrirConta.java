@@ -12,34 +12,61 @@ public class AbrirConta implements logicaDoSistema {
     int dataVencimento;
 
     @Override
-    public String validarIdade(){
+    public int validarIdade(){
     
         if(this.idade >= 18){
-            return "É maior de idade pode criar a conta: " + this.idade;
+            System.out.println("É maior de idade pode criar a conta: " + this.idade);
+            return this.idade;
         }
 
-        return "É menor de idade e não pode criar conta: " + this.idade;
+        System.out.println("É menor de idade e não pode criar conta: " + this.idade);
+        return this.idade;
 
     }
 
     @Override
-    public String valorPatrimonio(){
+    public int valorPatrimonio(){
 
         try{
 
             if(this.patrimonio <= PlanoEscolhido.PADRAO.PADRAO()){
-                return "Plano consedido é o PADRAO: " + String.valueOf(this.patrimonio);
+                System.out.println("Plano PADRAO: " + this.patrimonio);
+                this.patrimonio = PlanoEscolhido.PADRAO.PADRAO();
+                return this.patrimonio;
             }else if(this.patrimonio <= PlanoEscolhido.PREMIUM.PREMIUM()){
-                return "Plano consedido é o PREMIUM: " + String.valueOf(this.patrimonio);
+                System.out.println("Plano PREMIUM: " + this.patrimonio);
+                this.patrimonio = PlanoEscolhido.PREMIUM.PREMIUM();
+                return this.patrimonio;
             }else if(this.patrimonio <= PlanoEscolhido.STAR_PREMIUM.STAR_PREMIUM()){
-                return "Plano consedido é o STAR_PREMIUM: " + String.valueOf(this.patrimonio);
+                System.out.println("Plano STAR_PREMIUM: " + this.patrimonio);
+                this.patrimonio = PlanoEscolhido.STAR_PREMIUM.STAR_PREMIUM();
+                return this.patrimonio;
             }
 
             throw new ExceptionValorPatrimonio("Valor da operação é inválido");
 
         }catch(ExceptionValorPatrimonio ex){
-            return String.valueOf(ex);
+            System.out.println(String.valueOf(ex));
+            return 0;
         }
+
+    }
+
+
+    public String foiPossivelCriarAConta(){
+
+        int idadeAtual = validarIdade();
+
+        if(idadeAtual >= 18){
+            System.out.println("Sua idade esta dentro do esperado: " + this.idade + " A conta foi criada :)");
+            this.saldo = patrimonio; 
+        }
+
+        return "Sua idade não esta dentro do esperado >= 18: " + String.valueOf(this.idade); 
+
+    }
+
+    public void informacaoConta(){
 
     }
 

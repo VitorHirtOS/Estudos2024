@@ -25,24 +25,28 @@ public class MenuBank {
             
             switch (acaoDeOperacao) {
                 case 1:
-                    System.out.println("Operação escolhida Abrir conta\n");
+                    try{
+                        System.out.println("Operação escolhida Abrir conta\n");
 
-                    System.out.println("Qual o seu nome: \n");
-                    String nome = scanner.next();
-                    scanner.nextLine();
+                        System.out.println("Qual o seu nome: \n");
+                        String nome = scanner.next();
+                        scanner.nextLine();
 
-                    System.out.println("Qual o sua idade: \n");
-                    int idade = scanner.nextInt();
-                    scanner.nextLine();
+                        System.out.println("Qual o sua idade: \n");
+                        int idade = scanner.nextInt();
+                        scanner.nextLine();
 
-                    System.out.println("Qual o seu patrimonio: \n");
-                    int patrimonio = scanner.nextInt();
-                    scanner.nextLine();
+                        System.out.println("Qual o seu patrimonio: \n");
+                        int patrimonio = scanner.nextInt();
+                        scanner.nextLine();
 
-                    AbrirConta abrirConta = new AbrirConta(nome, idade, patrimonio);
+                        AbrirConta abrirConta = new AbrirConta(nome, idade, patrimonio);
 
-                    System.out.println(abrirConta.valorPatrimonio());
-                    System.out.println(abrirConta.validarIdade());
+                        abrirConta.foiPossivelCriarAConta();
+                    }catch(){
+
+                    }
+
 
                     break;
                 case 2:
