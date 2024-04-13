@@ -1,0 +1,14 @@
+/home/devvitor/Documents/Csharp/main/bin/Debug/net8.0/main
+/home/devvitor/Documents/Csharp/main/bin/Debug/net8.0/main.deps.json
+/home/devvitor/Documents/Csharp/main/bin/Debug/net8.0/main.runtimeconfig.json
+/home/devvitor/Documents/Csharp/main/bin/Debug/net8.0/main.dll
+/home/devvitor/Documents/Csharp/main/bin/Debug/net8.0/main.pdb
+/home/devvitor/Documents/Csharp/main/obj/Debug/net8.0/main.GeneratedMSBuildEditorConfig.editorconfig
+/home/devvitor/Documents/Csharp/main/obj/Debug/net8.0/main.AssemblyInfoInputs.cache
+/home/devvitor/Documents/Csharp/main/obj/Debug/net8.0/main.AssemblyInfo.cs
+/home/devvitor/Documents/Csharp/main/obj/Debug/net8.0/main.csproj.CoreCompileInputs.cache
+/home/devvitor/Documents/Csharp/main/obj/Debug/net8.0/main.dll
+/home/devvitor/Documents/Csharp/main/obj/Debug/net8.0/refint/main.dll
+/home/devvitor/Documents/Csharp/main/obj/Debug/net8.0/main.pdb
+/home/devvitor/Documents/Csharp/main/obj/Debug/net8.0/main.genruntimeconfig.cache
+/home/devvitor/Documents/Csharp/main/obj/Debug/net8.0/ref/main.dll
