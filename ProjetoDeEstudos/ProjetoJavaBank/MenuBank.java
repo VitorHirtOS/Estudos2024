@@ -21,6 +21,17 @@ public class MenuBank {
             Scanner scanner = new Scanner(System.in);
 
             int acaoDeOperacao = scanner.nextInt();
+            
+            switch (acaoDeOperacao) {
+                case 1:
+                    System.out.println("Operação escolhida Abrir conta");
+                    break;
+                case 2:
+                case 3:
+                case 4:
+                default:
+                    break;
+            }
 
 
         }
