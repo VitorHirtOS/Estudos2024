@@ -1,6 +1,6 @@
 ﻿<values>
   <value name="VSIs64BitProcess" type="string">True</value>
-  <value name="StillAlive" type="qword">133575391757287971</value>
+  <value name="StillAlive" type="qword">133575409757456377</value>
   <value name="extversion" type="string">1.4.29</value>
   <value name="ExeName" type="string">Microsoft.VisualStudio.Code.ServiceHost</value>
   <value name="VSInstanceId" type="string">55b6121b-78d9-4d96-aca8-e288cab68b751713061372453</value>
