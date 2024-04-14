@@ -45,7 +45,6 @@ public class MenuBank {
                             }
                             scanner.nextLine();
 
-    
                             System.out.println("Qual o seu patrimonio: \n");
                             int patrimonio = scanner.nextInt();
 
