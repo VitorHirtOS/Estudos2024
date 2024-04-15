@@ -2,78 +2,70 @@ package ProjetoDeEstudos.ProjetoJavaBank;
 
 import java.util.Scanner;
 
-public class MenuBank {
+public class MenuBank{
 
-    private boolean operacao = true;
-    private boolean excecao = false;
+    private boolean paraOperacao;
+    private String clienteOperacao;
 
-    public void Menu(){
-        
-        while(operacao){
-            System.out.println("|      Menu            |");
-            System.out.println("|                      |");
-            System.out.println("| 1 - Abrir conta      |");
-            System.out.println("| 2 - Depositar        |");
-            System.out.println("| 3 - Sacar            |");
-            System.out.println("| 4 - Visualizar Saldo |");
-            System.out.println("|                      |");
-            System.out.println("|      End             |\n");
+    public void menu(){
 
-            Scanner scanner = new Scanner(System.in);
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
 
-            System.out.println("Escolha uma operacao: \n");
-            int acaoDeOperacao = scanner.nextInt();
-            
-            switch (acaoDeOperacao){
-                case 1:
-                    try{
+        while(!paraOperacao){
 
-                        while(!excecao){
-                            System.out.println("Operação escolhida Abrir conta\n");
-                        
-                            System.out.println("Qual o seu nome: \n");
-                            String nome = scanner.next();
-                            scanner.nextLine();
-    
-                            System.out.println("Qual o sua idade: \n");
-                            int idade;
+            System.out.printf("\n");
+            System.out.printf("\u001B[31m |--------|      |    -- \u001B[31m\n");
+            System.out.printf("\u001B[34m |         -|    |  --\u001B[34m\n");
+            System.out.printf("\u001B[34m |   |--|   -|   | --\u001B[34m\n");
+            System.out.printf("\u001B[34m |   |--|   -|   |-\u001B[34m\n");
+            System.out.printf("\u001B[34m |        -|     |\u001B[34m\n");
+            System.out.printf("\u001B[34m |   |--|   -|   |-\u001B[34m\n");
+            System.out.printf("\u001B[34m |   |--|   -|   | --\u001B[34m\n");
+            System.out.printf("\u001B[34m |         -|    |  --\u001B[34m\n");
+            System.out.printf("\u001B[31m |--------|      |    --\u001B[31m\n");
+            System.out.printf("\n");
+            System.out.printf("\u001B[33m |---------------------------------------| \u001B[0m\n");
+            System.out.printf("\u001B[33m |  1) Abrir Conta     \u001B[35m(Abrir --> A)\u001B[0m     \u001B[33m| \u001B[0m\n");
+            System.out.printf("\u001B[33m |  2) Saldo Conta     \u001B[35m(Saldo --> S)\u001B[0m     \u001B[33m| \u001B[0m\n");
+            System.out.printf("\u001B[33m |  3) Depósito Conta  \u001B[35m(Depósito --> D)\u001B[0m  \u001B[33m| \u001B[0m\n");
+            System.out.printf("\u001B[33m |  4) Pagar Conta     \u001B[35m(Pagar --> P)\u001B[0m     \u001B[33m| \u001B[0m\n");
+            System.out.printf("\u001B[33m |  5) Sair do Sistema \u001B[35m(Encerrar --> E)\u001B[0m  \u001B[33m| \u001B[0m\n");
+            System.out.printf("\u001B[33m |---------------------------------------| \u001B[0m\n");
+            System.out.printf("\n");
 
-                            if(scanner.hasNextInt()){
-                                idade = scanner.nextInt();
-                            }else{
-                                throw new ExceptionAcaoMenu("Operação Inválida!!!");
-                            }
-                            scanner.nextLine();
+            // Scanner
 
-                            System.out.println("Qual o seu patrimonio: \n");
-                            int patrimonio = scanner.nextInt();
+            Scanner sc = new Scanner(System.in);
 
-                            if(scanner.hasNextInt()){
-                                patrimonio = scanner.nextInt();
-                            }else{
-                                throw new ExceptionAcaoMenu("Operação Inválida!!!");  
-                            }
-    
-                            AbrirConta abrirConta = new AbrirConta(nome, idade, patrimonio);
-                            abrirConta.foiPossivelCriarAConta();
-                        
-                        }
-                       
-                    }catch(ExceptionAcaoMenu Ex){
-                        System.out.println("Erro de operação: " + Ex.getMessage());
-                    }
+            // Entrada de dados do cliente
+
+            System.out.print(" Qual operação: ");
+            clienteOperacao = sc.nextLine();
+
+            switch (clienteOperacao) {
+                case "A":
+                    System.out.println(" Opção escolhida (Abrir Conta)");
                     break;
-                case 2:
-                case 3:
-                case 4:
+                case "S":  
+                    System.out.println(" Opção escolhida (Saldo Conta)"); 
+                    break;        
+                case "D":   
+                    System.out.println(" Opção escolhida (Depósito Conta)"); 
+                    break;        
+                case "P":    
+                    System.out.println(" Opção escolhida (Pagar Conta)");  
+                    break;      
+                case "E":  
+                    System.out.println(" Opção escolhida (Sair do Sistema)"); 
+                    paraOperacao = true; 
+                    break;         
                 default:
+                    System.out.println(" Operação Inválida");                     
                     break;
             }
 
-
         }
-
-
 
     }
 

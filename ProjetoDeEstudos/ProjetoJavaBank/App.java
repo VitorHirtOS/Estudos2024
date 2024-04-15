@@ -1,10 +1,10 @@
 package ProjetoDeEstudos.ProjetoJavaBank;
 
-public class RunProgram {
+public class App {
     
     public static void main(String[] args){
         MenuBank menuBank = new MenuBank();
-        menuBank.Menu();
+        menuBank.menu();
     }
 
 }
