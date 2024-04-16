@@ -1,5 +1,3 @@
-package ProjetoDeEstudos.ProjetoJavaBank;
-
 import java.util.Scanner;
 
 public class MenuBank{
