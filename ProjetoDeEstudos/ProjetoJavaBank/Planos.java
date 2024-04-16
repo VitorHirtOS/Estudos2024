@@ -1,4 +1,4 @@
-public enum PLANOS {
+public enum Planos {
     
     BASIC,
     PREMIUM,

@@ -1,7 +1,7 @@
-
-
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AbrirConta{
     
@@ -11,50 +11,76 @@ public class AbrirConta{
     private int idade;
     private double salario;
 
-    // Classe Atributos imutáveis
+    // Classe Atributos mutáveis
 
     private int idConta;
     private int CVC;
     private String numeroCard;
     private String vencimentoCard;
-
-    // Classe Atributos mutáveis
-
+    private final ArrayList<String> INFORMACAOCLIENTE = new ArrayList<String>();
     private int limite;
+    private String status;
     
     // Método --> CriacaoConta <--
 
-    private ArrayList<String> criacaoConta(){
-
-        final ArrayList<String> INFORMACAOCLIENTE = new ArrayList<String>();
-        
-        if(this.idade >= 18 && this.salario >= 500){
-            
-            PLANOS planos;
-
-            if(this.salario > 0 && this.salario < 4000){
-                
-                this.limite = planos.BASIC();
-
-                Random valorRandom = new Random();
-
-
-                this.idConta = valorRandom.nextInt(1) + 500;
-                this.CVC = valorRandom.nextInt(100) + 999;
-                
-
-            }else if(this.salario > 4000 && this.salario < 9000){
-                this.limite = planos.PREMIUM();
-            }else{
-                this.limite = planos.STAR_PREMIUM();
+    private boolean criacaoConta() {
+        if (this.idade >= 18 && this.salario >= 500) {
+            Random valorRandom = new Random();
+    
+            if (this.salario > 0 && this.salario < 4000) {
+                this.limite = Planos.BASIC.BASIC();
+            } else if (this.salario > 4000 && this.salario < 9000) {
+                this.limite = Planos.PREMIUM.PREMIUM();
+            } else if (this.salario > 9000) {
+                this.limite = Planos.STAR_PREMIUM.STAR_PREMIUM();
             }
-            
-            return INFORMACAOCLIENTE;
+    
+            this.idConta = valorRandom.nextInt(500) + 501;
+            this.CVC = valorRandom.nextInt(100) + 1000;
+    
+            StringBuilder cartaoBuilder = new StringBuilder();
+    
+            for (int i = 0; i < 4; i++) {
+                cartaoBuilder.append(String.format("%04d", valorRandom.nextInt(10000)));
+                if (i < 3) {
+                    cartaoBuilder.append(",");
+                }
+            }
+    
+            this.numeroCard = cartaoBuilder.toString();
+    
+            Pattern cartao = Pattern.compile("^\\d{4},\\d{4},\\d{4},\\d{4}$");
+            Matcher matcher = cartao.matcher(this.numeroCard);
+    
+            if (!matcher.matches()) {
+                System.out.println("Não é possível abrir a conta");
+                return false;
+            }
+    
+            this.status = "Ativo 😁";
+    
+            INFORMACAOCLIENTE.add("Limite: " + String.valueOf(this.limite));
+            INFORMACAOCLIENTE.add("ID da Conta: " + String.valueOf(this.idConta));
+            INFORMACAOCLIENTE.add("CVC: " + String.valueOf(this.CVC));
+            INFORMACAOCLIENTE.add("Número do Cartão: " + this.numeroCard);
+            INFORMACAOCLIENTE.add("Status: " + this.status);
+            INFORMACAOCLIENTE.add("Nome: " + this.name);
+    
+            return true;
         }
-
-        return INFORMACAOCLIENTE;
+    
+        System.out.println("Não é possível abrir a conta");
+        return false;
     }
+    
 
+    // Método --> Método informacaoUsuario <--
+
+    public ArrayList<String> informacaoUsuario(){
+
+        return this.INFORMACAOCLIENTE;
+
+    }
 
     // Construtor
 

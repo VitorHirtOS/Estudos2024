@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MenuBank{
@@ -37,7 +38,7 @@ public class MenuBank{
             // Entrada de dados do cliente
 
             System.out.print(" Qual operação: ");
-            clienteOperacao = sc.nextLine();
+            clienteOperacao = sc.nextLine().toUpperCase();
             System.out.printf("\n");
 
             switch (clienteOperacao) {
@@ -53,7 +54,6 @@ public class MenuBank{
                     System.out.printf("\n");
                     System.out.print(" 👾" + " Qual sua idade: ");
                     idade = sc.nextInt();                   
-                    sc.nextLine();
                     System.out.printf("\n");
                     System.out.print("\u001B[32m 💰\u001B[00m" + " Qual seu salário: ");
                     salario = sc.nextDouble();
@@ -61,6 +61,11 @@ public class MenuBank{
                     System.out.printf("\n");
 
                     AbrirConta abrirConta = new AbrirConta(name, idade, salario);
+
+                    ArrayList<String> informacoes = abrirConta.informacaoUsuario();
+                    for (String info : informacoes) {
+                        System.out.println(info);
+                    }
                     
                     break;
                 case "S":  
