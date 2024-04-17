@@ -5,6 +5,14 @@ public class MenuBank{
 
     private boolean paraOperacao;
     private String clienteOperacao;
+    private String name;
+    private int idade;
+    private double salario;
+    private String senha;
+    private String senhaIsValid;
+    private boolean isValid = false;
+    private boolean foiPossivelCriaConta = false;
+
 
     public void menu(){
 
@@ -45,33 +53,70 @@ public class MenuBank{
                 case "A":
                     System.out.println(" Opção escolhida (Abrir Conta)");
                     System.out.printf("\n");
-                    String name;
-                    int idade;
-                    double salario;
-
+                    
                     System.out.print("\u001B[33m 😎\u001B[00m" + " Qual seu nome: ");
                     name = sc.nextLine();
-                    System.out.printf("\n");
+                    System.out.print("\n");
                     System.out.print(" 👾" + " Qual sua idade: ");
                     idade = sc.nextInt();                   
-                    System.out.printf("\n");
+                    System.out.print("\n");
                     System.out.print("\u001B[32m 💰\u001B[00m" + " Qual seu salário: ");
                     salario = sc.nextDouble();
                     sc.nextLine();
-                    System.out.printf("\n");
+                    System.out.print("\n");
+                    System.out.print("\u001B[32m 🔑\u001B[00m" + " Crie uma senha: ");
+                    senha = sc.nextLine();
 
-                    AbrirConta abrirConta = new AbrirConta(name, idade, salario);
+                    while(!isValid){
 
-                    ArrayList<String> informacoes = abrirConta.informacaoUsuario();
-                    System.out.println("------ Cartão InovaBank ------");
-                    for (String info : informacoes) {
-                        System.out.println(" " + info);
+                        System.out.print("\n");
+                        System.out.print("\u001B[32m 🔏\u001B[00m" + " Confirme sua senha ou 1 para sair: ");
+                        senhaIsValid = sc.nextLine(); 
+
+                        if(senha.equals(senhaIsValid)){
+                            System.out.print("\n Senha aceita \n");
+                            isValid = true;
+                            foiPossivelCriaConta = true;
+                            break;
+                        }else if(senhaIsValid.equals("1")){
+                            System.out.print("\n Não foi possível criar a conta 😞\n"); 
+                            name = null;
+                            foiPossivelCriaConta = false;
+                            break;
+                        }
+
+                        System.out.print("\n Senha não são iguais\n");
                     }
-                    System.out.println("------------- End ------------");
+
+                    System.out.print("\n");
+
+                    if(foiPossivelCriaConta){
+
+                        AbrirConta abrirConta = new AbrirConta(name, idade, salario, senha);
+
+                        ArrayList<String> informacoes = abrirConta.informacaoUsuario();
+                        System.out.println("------ Cartão InovaBank ------");
+                        for (String info : informacoes) {
+                            System.out.println(" " + info);
+                        }
+                        System.out.println("------------- End ------------");
+
+                    }
                     
                     break;
                 case "S":  
                     System.out.println(" Opção escolhida (Saldo Conta)"); 
+
+                    if(name != null){
+
+                        SaldoConta saldoConta = new SaldoConta(name, idade, salario, senha);
+
+                        System.out.println(saldoConta.saldoDaConta(salario));
+                        break;
+                    }
+
+                    System.out.println("\n A conta não foi criada ainda!!! 🤔\n"); 
+
                     break;        
                 case "D":   
                     System.out.println(" Opção escolhida (Depósito Conta)"); 

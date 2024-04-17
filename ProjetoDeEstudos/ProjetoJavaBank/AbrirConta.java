@@ -10,7 +10,7 @@ public class AbrirConta{
     private double salario;
     private String senha;
 
-    // Classe Atributos mutáveis
+    // Classe Atributos mutáveis e imutáveis
 
     private int idConta;
     private int CVC;
@@ -19,24 +19,38 @@ public class AbrirConta{
     private final ArrayList<String> INFORMACAOCLIENTE = new ArrayList<String>();
     private int limite;
     private String status;
+    private double saldo;
+
+    protected double getSet(double valor){
+        saldo = valor;
+        return saldo;
+    }
     
     // Método --> CriacaoConta <--
 
     private boolean criacaoConta() {
         if (this.idade >= 18 && this.salario >= 500) {
             Random valorRandom = new Random();
+
+            String _planos = "";
     
             if (this.salario > 0 && this.salario <= 4000) {
                 this.limite = Planos.BASIC.BASIC();
+                _planos = "Básico!!!";
             } else if (this.salario > 4000 && this.salario <= 9000) {
                 this.limite = Planos.PREMIUM.PREMIUM();
+                _planos = "Premium!!!";
             } else if (this.salario > 9000) {
                 this.limite = Planos.STAR_PREMIUM.STAR_PREMIUM();
+                _planos = "Star_Premium!!!";
             }
     
             this.idConta = valorRandom.nextInt(500) + 501;
-            this.CVC = valorRandom.nextInt(100) + 1000;
+            this.CVC = valorRandom.nextInt(100) + 100;
             this.status = "\u001B[32mAtivo\u001B[00m";
+            int cardNumber = valorRandom.nextInt(28) + 1;
+            String anoVencimento = "/30";
+            this.vencimentoCard = String.valueOf(cardNumber) + anoVencimento;
     
             StringBuilder cartaoBuilder = new StringBuilder();
     
@@ -55,11 +69,15 @@ public class AbrirConta{
             INFORMACAOCLIENTE.add("Número do Cartão: " + this.numeroCard);
             INFORMACAOCLIENTE.add("Status: " + this.status);
             INFORMACAOCLIENTE.add("Nome: " + this.name);
+            INFORMACAOCLIENTE.add("Senha do cartão: " + this.senha);
+            INFORMACAOCLIENTE.add("Vencimento do cartão: " + this.vencimentoCard);
     
+            System.out.print("Sua conta foi criada com sucesso 🤓. E seu plano de limite é: " + _planos + "\n\n");
+
             return true;
         }
     
-        System.out.println(" Não é possível abrir a conta");
+        System.out.println(" Não é possível abrir à conta \u001B[33m 😞\u001B[0m \n\n");
         return false;
     }
     
@@ -75,10 +93,11 @@ public class AbrirConta{
 
     // Construtor
 
-    public AbrirConta(String name, int idade, double salario){
+    public AbrirConta(String name, int idade, double salario, String senha){
         this.name = name;
         this.idade = idade;
         this.salario = salario;
+        this.senha = senha;
     }
 
 }
