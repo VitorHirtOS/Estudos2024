@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class AbrirConta{
     
@@ -10,6 +8,7 @@ public class AbrirConta{
     private String name;
     private int idade;
     private double salario;
+    private String senha;
 
     // Classe Atributos mutáveis
 
@@ -27,9 +26,9 @@ public class AbrirConta{
         if (this.idade >= 18 && this.salario >= 500) {
             Random valorRandom = new Random();
     
-            if (this.salario > 0 && this.salario < 4000) {
+            if (this.salario > 0 && this.salario <= 4000) {
                 this.limite = Planos.BASIC.BASIC();
-            } else if (this.salario > 4000 && this.salario < 9000) {
+            } else if (this.salario > 4000 && this.salario <= 9000) {
                 this.limite = Planos.PREMIUM.PREMIUM();
             } else if (this.salario > 9000) {
                 this.limite = Planos.STAR_PREMIUM.STAR_PREMIUM();
@@ -37,6 +36,7 @@ public class AbrirConta{
     
             this.idConta = valorRandom.nextInt(500) + 501;
             this.CVC = valorRandom.nextInt(100) + 1000;
+            this.status = "\u001B[32mAtivo\u001B[00m";
     
             StringBuilder cartaoBuilder = new StringBuilder();
     
@@ -49,16 +49,6 @@ public class AbrirConta{
     
             this.numeroCard = cartaoBuilder.toString();
     
-            Pattern cartao = Pattern.compile("^\\d{4},\\d{4},\\d{4},\\d{4}$");
-            Matcher matcher = cartao.matcher(this.numeroCard);
-    
-            if (!matcher.matches()) {
-                System.out.println("Não é possível abrir a conta");
-                return false;
-            }
-    
-            this.status = "Ativo 😁";
-    
             INFORMACAOCLIENTE.add("Limite: " + String.valueOf(this.limite));
             INFORMACAOCLIENTE.add("ID da Conta: " + String.valueOf(this.idConta));
             INFORMACAOCLIENTE.add("CVC: " + String.valueOf(this.CVC));
@@ -69,7 +59,7 @@ public class AbrirConta{
             return true;
         }
     
-        System.out.println("Não é possível abrir a conta");
+        System.out.println(" Não é possível abrir a conta");
         return false;
     }
     
@@ -78,6 +68,7 @@ public class AbrirConta{
 
     public ArrayList<String> informacaoUsuario(){
 
+        criacaoConta();
         return this.INFORMACAOCLIENTE;
 
     }

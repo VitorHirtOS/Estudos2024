@@ -14,12 +14,12 @@ public class MenuBank{
         while(!paraOperacao){
 
             System.out.printf("\n");
-            System.out.println(" \u001B[32m███████╗     ██╗  ██╗\u001B[0m");
-            System.out.println(" \u001B[34m██╔══█═╝     ██║ ██ ║\u001B[0m");
-            System.out.println(" \u001B[34m█████        ██║█╚══╝  \u001B[0m");
-            System.out.println(" \u001B[34m██╔══█       ██║██══╗\u001B[0m");
-            System.out.println(" \u001B[34m███████╗     ██║  ██║\u001B[0m");
-            System.out.println(" \u001B[34m╚══════╝     ╚═╝  ╚═╝   \u001B[0m");           
+            System.out.println(" \u001B[32m██████╗  ██╗ ██╗\u001B[0m");
+            System.out.println(" \u001B[34m██╔══██  ████  ║\u001B[0m");
+            System.out.println(" \u001B[34m█████    ██ ╚══╝  \u001B[0m");
+            System.out.println(" \u001B[34m██╔══██  ████╔══╗\u001B[0m");
+            System.out.println(" \u001B[34m██████╗  ██║ ██ ║\u001B[0m");
+            System.out.println(" \u001B[34m╚═════╝  ╚═╝ ╚══╝   \u001B[0m");           
             System.out.printf("\n");
             System.out.printf("\u001B[33m |-------------------------------------------------| \u001B[0m\n");
             System.out.printf("\u001B[33m |  1) 💎 Abrir Conta     \u001B[35m(Abrir --> A)\u001B[0m\u001B[33m            | \u001B[0m\n");
@@ -63,9 +63,11 @@ public class MenuBank{
                     AbrirConta abrirConta = new AbrirConta(name, idade, salario);
 
                     ArrayList<String> informacoes = abrirConta.informacaoUsuario();
+                    System.out.println("------ Cartão InovaBank ------");
                     for (String info : informacoes) {
-                        System.out.println(info);
+                        System.out.println(" " + info);
                     }
+                    System.out.println("------------- End ------------");
                     
                     break;
                 case "S":  
