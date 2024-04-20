@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -39,7 +40,7 @@ public class Menu {
                     break;
                 case "C":
 
-                    if(isValidSalario == false){
+                    if(!isValidSalario){
                         System.out.println("Saldo da conta: " + contaBancaria.GetSaldo());
                         break;
                     }
@@ -49,7 +50,7 @@ public class Menu {
                     break;
                 case "D":
 
-                    if(isValidSalario == false){
+                    if(!isValidSalario){
                         System.out.print("Valor para depositar: ");
                         int depostio = scanner.nextInt();
                         scanner.nextLine();
@@ -62,7 +63,7 @@ public class Menu {
                     break;
                 case "P":
 
-                    if(isValidSalario != true){
+                    if(!isValidSalario){
                         System.out.println("Valor a pagar");
                         int pagar = scanner.nextInt();
                         contaBancaria.Pagar(pagar);
@@ -83,12 +84,22 @@ public class Menu {
 
                     isValidIdade = idade;
 
-                    Usuario usuario = new Usuario(nome);
-                    usuario.setIdade(idade);
+                    Usuario usuario = new Usuario(nome, idade);
+
+                    ArrayList<String> info = new ArrayList<>();
+
+                    info = usuario.informacaoUsuario();
+
+                    for(String i : info){
+                        System.out.println(i);
+                    }
 
                     break;
+                case "I":
+                    System.out.print("Informação do usuário");
+                    break;
                 default:
-                    System.err.println("Saindo do sistema!!!");
+                    System.out.println("Saindo do sistema!!!");
                     isValid = true;
                     break;
             }
